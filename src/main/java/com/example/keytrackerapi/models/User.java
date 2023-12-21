@@ -16,4 +16,17 @@ public class User {
     public String username;
     public String email;
     public String masterPassword;
+
+    public static User fromPostDto(UserPostDTO userPostDTO) {
+        User user = new User();
+        user.setName(userPostDTO.name());
+        user.setUsername(userPostDTO.username());
+        user.setEmail(userPostDTO.email());
+        user.setMasterPassword(userPostDTO.masterPassword());
+        return user;
+    }
+
+    public static UserDTO toDto(User user) {
+        return new UserDTO(user.getId(), user.getName(), user.getUsername(), user.getEmail());
+    }
 }
